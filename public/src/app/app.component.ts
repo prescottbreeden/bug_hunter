@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 
 @Component({
@@ -6,7 +6,16 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(private _httpService: HttpService) { }
+  users: any = [];
+
+  constructor(private _http: HttpService) { }
+
+  ngOnInit() {
+    this._http.getUsers().subscribe(data => {
+      this.users = data;
+      console.log(this.users);
+    });
+  }
 }

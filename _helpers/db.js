@@ -1,13 +1,12 @@
+const config = require('../config.json');
 const mongoose = require('mongoose');
+// mongoose.connect(process.env.MONGODB_URI || config.connectionString);
 mongoose.connect('mongodb://localhost:27017/bug_hunter', 
                 { useNewUrlParser: true })
         .then(()=> console.log("database connected"))
         .catch((err)=> console.log(err))
+mongoose.Promise = global.Promise;
 
-const UserSchema = new mongoose.Schema({
-  username: { type: String },
-  email: { type: String },
-  password: { type: String },
-}, {timestamps: true})
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = {
+  User: require('../users/user.model'),
+};

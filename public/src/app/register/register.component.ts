@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,10 @@ export class RegisterComponent implements OnInit {
   showEmailField = true;
   showPasswordField = false;
 
-  constructor(private _http: HttpService) { }
+  constructor(
+    private _http: HttpService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -38,12 +42,14 @@ export class RegisterComponent implements OnInit {
 
   onPassword() {
     if (this.isRegistered) {
-      return this._http.validate(this.user).subscribe(data => {
+      this._http.validate(this.user).subscribe(data => {
         console.log(data);
+        this._router.navigate(['/bugs']);
       });
     } else {
-      return this._http.createUser(this.user).subscribe(data => {
+      this._http.createUser(this.user).subscribe(data => {
         console.log(data);
+        this._router.navigate(['/bugs']);
       });
     }
   }

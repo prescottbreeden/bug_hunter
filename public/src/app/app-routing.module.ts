@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+import { BugsShowComponent } from './bugs/bugs-show/bugs-show.component';
 
 const routes: Routes = [
   { path: '', component: RegisterComponent},
+  { path: 'bugs', component: BugsShowComponent},
 ];
 
 @NgModule({

@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { NavComponent } from './nav/nav.component';
 import { HttpService } from './http.service';
+import { BugsShowComponent } from './bugs/bugs-show/bugs-show.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     NavComponent,
+    BugsShowComponent,
   ],
   imports: [
     BrowserModule,
