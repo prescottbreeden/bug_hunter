@@ -18,7 +18,7 @@ const PORT = 8080;
 
 app.use(bp.urlencoded({ extended: false }));
 app.use(bp.json());
-app.use(jwt());
+// app.use(jwt());
 
 app.use(express.static( __dirname + '/public/dist/public' ));
 app.use('/users', require('./users/users.controller'));

@@ -5,8 +5,7 @@ const schema = new Schema({
   username: { type: String, required: true },
   hash: { type: String, required: true },
   email: { type: String, required: true },
-  createdDate: { type: Date, default: Date.now },
-})
+}, { timestamps: true })
 
 schema.set('toJSON', { virtuals: true });
 
