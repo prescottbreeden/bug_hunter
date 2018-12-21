@@ -2,8 +2,9 @@ const bugs = require('./controllers/BugControllers');
 const users = require('./controllers/UserControllers');
 module.exports = function(app) {
 
-  app.get('/validate', users.login);
   app
+    .post('/validate', users.login)
+
     .get('/api/users', users.getAll)
     .get('/api/users/email/:email', users.getByEmail)
     .get('/api/users/id/:id', users.getById)

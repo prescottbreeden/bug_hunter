@@ -58,9 +58,11 @@ function validateAndCreate(req, res) {
 
 function validateAndLogin(req, res) {
   const DATA = req.body;
+  console.log(DATA);
 
   User.find({ email: DATA.email })
     .then(user => {
+      console.log(user);
       if (user.length == 0) { throw "User email not found" }
       else { return bcrypt.compare(DATA.password, user.password) }
       })
@@ -70,6 +72,7 @@ function validateAndLogin(req, res) {
         return true;
       }
       else {
+        console.log('nopers....')
         return false;
       }
     })
