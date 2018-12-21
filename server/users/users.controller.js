@@ -1,17 +1,14 @@
-const express = require('express');
-const router = express.Router();
 const userService = require('./user.service');
 
-router
-  .post('/authenticate', authenticate)
-  .get('/current', getCurrent)
-  .get('/api/users', getAll)
-  .get('/api/users/:id', getById)
-  .post('/api/users', register)
-  .put('/api/users/:id', update)
-  .delete('/api/users/:id', _delete);
-
-module.exports = router;
+module.exports = {
+ authenticate,
+ register,
+ getAll,
+ getCurrent,
+ getById,
+ update,
+ _delete,
+}
 
 function authenticate(req, res, next) {
   userService.authenticate(req.body)
@@ -28,7 +25,10 @@ function register(req, res, next) {
 
 function getAll(req, res, next) {
   userService.getAll()
-    .then(users => res.json(users))
+    .then(users => {
+      res.json(users);
+      console.log('jiggy');
+    })
     .catch(err => next(err));
 }
 

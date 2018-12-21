@@ -1,8 +1,12 @@
-const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const db = require('../_helpers/db');
-const User = db.User;
+const mysql = require('mysql');
+const dbConnection = mysql.createConnection({
+  host: 'localhost',
+  user: 'trashpanda',
+  password: 'rubberbabbybuggybumpers',
+  database: 'bug_hunter'  
+});
 
 module.exports = {
   authenticate,
@@ -26,7 +30,8 @@ async function authenticate({ username, password }) {
 }
 
 async function getAll() { 
-  return await User.find().select('-hash');
+  let q = 'SELECT * FROM users where user_id = 1;';
+  return await dbConnection.query(q);
 }
 
 async function getById(id) {

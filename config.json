@@ -1,4 +1,3 @@
 {
-  "connectionString": "mongodb://localhost/bug_hunter",
   "secret": "rubber baby buggy bumpers"
 }
